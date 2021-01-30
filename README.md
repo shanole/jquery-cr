@@ -3,7 +3,7 @@ _by Shannon Lee for Code Review #2 at Epicodus_
 
 This is a simple survey website that suggests the best of 3 coding languages (JavaScript, Python, and C#) based on the user's responses. 
 
-Click [here](https://shanole.github.io/jquery-cr/) for this website hosted on GitHub Pages
+Click [here](https://shanole.github.io/jquery-cr/index.html) for this website hosted on GitHub Pages
 
 ## Technologies used
 * HTML
