@@ -1,3 +1,7 @@
 #output {
-  display: none
+  display: none;
+}
+
+#not-human {
+  display: none;
 }
