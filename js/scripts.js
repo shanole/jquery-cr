@@ -13,16 +13,16 @@ function bestLanguage(arr) {
     }
   })
  if (freq[0] > freq[1] && freq[0] > freq[2]) {
-		return "Python"; 	
+		return "Javascript"; 	
  }
  else if (freq[1] > freq[0] && freq[1] > freq[2]) {
- 		return "Javascript";
+ 		return "Python";
  }
  else if (freq[2] > freq[1] && freq[2] > freq[0]) {
  		return "C#";
  }
  else {
- 		return "either JavaScript, Python, OR C#. You can do anything!";
+ 		return "either JavaScript, Python, OR C#. You can do anything";
  }
 }
 
@@ -40,11 +40,13 @@ $(document).ready(function() {
     $("#nameOut").text(userName);
 
     if (isHuman === "no") {
-      $("#not-human").show();
+      $("#output-1").hide();
+      $("#output-2").toggle();
     }
     else {
       $("#language").text(bestLanguage(surveyResults));
-      $("#output").show();
+      $("#output-2").hide();
+      $("#output-1").toggle();
     }
   })
 })
