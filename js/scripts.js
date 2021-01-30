@@ -1,23 +1,29 @@
-function getModes(array) {
-  let frequency = {}; // array of frequency.
-  let maxFreq = 0; // holds the max frequency.
-  let modes = [];
-
-  for (var i in array) {
-    frequency[array[i]] = (frequency[array[i]] || 0) + 1; // increment frequency.
-
-    if (frequency[array[i]] > maxFreq) { // is this frequency > max so far ?
-      maxFreq = frequency[array[i]]; // update max.
+function bestLanguage(arr) {
+  let freq = [0,0,0];
+  arr.forEach(function(value) {
+    if (value === 1) {
+      freq[0] += 1;
+      
     }
-  }
-
-  for (var k in frequency) {
-    if (frequency[k] == maxFreq) {
-      modes.push(k);
+    else if (value === 2) {
+      freq[1] += 1;
     }
-  }
-
-  return modes;
+    else {
+      freq[2] += 1;
+    }
+  })
+ if (freq[0] > freq[1] && freq[0] > freq[2]) {
+		return "Python"; 	
+ }
+ else if (freq[1] > freq[0] && freq[1] > freq[2]) {
+ 		return "Javascript";
+ }
+ else if (freq[2] > freq[1] && freq[2] > freq[0]) {
+ 		return "C#";
+ }
+ else {
+ 		return "either JavaScript, Python, OR C#. You can do anything!";
+ }
 }
 
 $(document).ready(function() {
@@ -30,8 +36,6 @@ $(document).ready(function() {
     const isHuman = $("input:radio[name=humanity]:checked").val();
 
     let surveyResults = [userSubject, userGoal, userPet];
-
-    const bestLanguageValue = getModes(surveyResults);
     
     $("#nameOut").text(userName);
 
@@ -39,33 +43,8 @@ $(document).ready(function() {
       $("#not-human").show();
     }
     else {
-      if (bestLanguageValue.length > 1) {
-        $("#language").text("either JavaScript, Python, OR C#. You can do anything!")
-      }
-      else {
-        if (bestLanguageValue[0]==="1") {
-          $("#language").text("JavaScript")
-        }
-        else if (bestLanguageValue[0]==="2") {
-          $("#language").text("Python")
-        }
-        else if (bestLanguageValue[0]==="3") {
-          $("#language").text("C#")
-        }
-      }
+      $("#language").text(bestLanguage(surveyResults));
       $("#output").show();
     }
-
-
-
-
-    console.log(userName);
-    console.log("survey results are: " + surveyResults);
-    console.log("mode is: " + bestLanguageValue);
-    console.log("length of mode list is: " + bestLanguageValue.length)
-    console.log("are we human? " + isHuman);
-
-    
-
   })
 })
